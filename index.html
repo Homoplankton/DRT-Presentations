@@ -6,7 +6,7 @@
     <title>一个矛盾潜水员的蜕变之路</title>
 
     <!-- Fonts: Cormorant Garamond for English serif, Noto Serif/Sans SC for Chinese -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&amp;family=Noto+Serif+SC:wght@300;400;600;700&amp;family=Noto+Sans+SC:wght@300;400;500&amp;display=swap" rel="stylesheet">
 
     <style>
         /* ===========================================
@@ -604,18 +604,14 @@
             font-family: var(--font-body);
             transition: background 0.2s ease, border-color 0.2s ease;
         }
-
         .slide-delete-btn:hover {
             background: rgba(180, 50, 50, 0.3);
             border-color: rgba(180, 50, 50, 0.5);
         }
-
-        body.edit-mode .slide-delete-btn {
-            display: block;
-        }
+        body.edit-mode .slide-delete-btn { display: block; }
 
         /* ===========================================
-           EDIT TOOLBAR (export + reset buttons)
+           EDIT TOOLBAR (export + reset)
            =========================================== */
         .edit-toolbar {
             position: fixed;
@@ -626,11 +622,7 @@
             gap: clamp(0.4rem, 0.8vw, 0.6rem);
             z-index: 10001;
         }
-
-        body.edit-mode .edit-toolbar {
-            display: flex;
-        }
-
+        body.edit-mode .edit-toolbar { display: flex; }
         .toolbar-btn {
             background: rgba(201, 169, 110, 0.12);
             border: 1px solid var(--divider);
@@ -643,20 +635,13 @@
             transition: background 0.2s ease;
             white-space: nowrap;
         }
-
-        .toolbar-btn:hover {
-            background: rgba(201, 169, 110, 0.25);
-        }
-
+        .toolbar-btn:hover { background: rgba(201, 169, 110, 0.25); }
         .toolbar-btn.danger {
             color: #e05555;
             border-color: rgba(180, 50, 50, 0.3);
             background: rgba(180, 50, 50, 0.1);
         }
-
-        .toolbar-btn.danger:hover {
-            background: rgba(180, 50, 50, 0.25);
-        }
+        .toolbar-btn.danger:hover { background: rgba(180, 50, 50, 0.25); }
 
         /* ===========================================
            CONFIRM DIALOG
@@ -670,11 +655,7 @@
             align-items: center;
             justify-content: center;
         }
-
-        .confirm-overlay.show {
-            display: flex;
-        }
-
+        .confirm-overlay.show { display: flex; }
         .confirm-dialog {
             background: #1a1a1a;
             border: 1px solid var(--divider);
@@ -683,25 +664,21 @@
             max-width: min(85vw, 400px);
             text-align: center;
         }
-
         .confirm-dialog h3 {
             font-size: var(--h3-size);
             color: var(--text-primary);
             margin-bottom: clamp(0.5rem, 1vh, 0.8rem);
         }
-
         .confirm-dialog p {
             font-size: var(--body-size);
             color: var(--text-secondary);
             margin-bottom: clamp(1rem, 2vh, 1.5rem);
         }
-
         .confirm-actions {
             display: flex;
             gap: clamp(0.5rem, 1vw, 0.8rem);
             justify-content: center;
         }
-
         .confirm-actions button {
             padding: clamp(0.4rem, 0.6vh, 0.5rem) clamp(1rem, 2vw, 1.5rem);
             border-radius: 4px;
@@ -710,26 +687,18 @@
             font-size: var(--body-size);
             transition: background 0.2s ease;
         }
-
         .btn-cancel {
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: var(--text-secondary);
         }
-
-        .btn-cancel:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
+        .btn-cancel:hover { background: rgba(255, 255, 255, 0.15); }
         .btn-confirm-delete {
             background: rgba(180, 50, 50, 0.3);
             border: 1px solid rgba(180, 50, 50, 0.5);
             color: #e05555;
         }
-
-        .btn-confirm-delete:hover {
-            background: rgba(180, 50, 50, 0.5);
-        }
+        .btn-confirm-delete:hover { background: rgba(180, 50, 50, 0.5); }
 
         /* ===========================================
            SLIDE-SPECIFIC BACKGROUNDS
@@ -815,52 +784,38 @@
         }
     </style>
 </head>
-<body>
+<body class="">
 
     <!-- Progress Bar -->
-    <div class="progress-bar" id="progressBar"></div>
+    <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
 
     <!-- Navigation Dots -->
-    <nav class="nav-dots" id="navDots" aria-label="Slide navigation"></nav>
+    <nav class="nav-dots" id="navDots" aria-label="Slide navigation"><button class="nav-dot active" aria-label="Go to slide 1"></button><button class="nav-dot" aria-label="Go to slide 2"></button><button class="nav-dot" aria-label="Go to slide 3"></button><button class="nav-dot" aria-label="Go to slide 4"></button><button class="nav-dot" aria-label="Go to slide 5"></button><button class="nav-dot" aria-label="Go to slide 6"></button><button class="nav-dot" aria-label="Go to slide 7"></button><button class="nav-dot" aria-label="Go to slide 8"></button><button class="nav-dot" aria-label="Go to slide 9"></button><button class="nav-dot" aria-label="Go to slide 10"></button><button class="nav-dot" aria-label="Go to slide 11"></button><button class="nav-dot" aria-label="Go to slide 12"></button><button class="nav-dot" aria-label="Go to slide 13"></button><button class="nav-dot" aria-label="Go to slide 14"></button><button class="nav-dot" aria-label="Go to slide 15"></button><button class="nav-dot" aria-label="Go to slide 16"></button><button class="nav-dot" aria-label="Go to slide 17"></button><button class="nav-dot" aria-label="Go to slide 18"></button><button class="nav-dot" aria-label="Go to slide 19"></button><button class="nav-dot" aria-label="Go to slide 20"></button><button class="nav-dot" aria-label="Go to slide 21"></button><button class="nav-dot" aria-label="Go to slide 22"></button><button class="nav-dot" aria-label="Go to slide 23"></button><button class="nav-dot" aria-label="Go to slide 24"></button></nav>
 
     <!-- Keyboard Hint -->
-    <div class="keyboard-hint decorative">← → 键翻页 · Space 下一页</div>
+    
 
     <!-- Inline Editing Controls -->
-    <div class="edit-hotzone" id="editHotzone"></div>
-    <button class="edit-toggle" id="editToggle">✏️ 编辑模式</button>
-    <div class="save-toast" id="saveToast">已保存到浏览器</div>
+    
+    
+    
 
     <!-- Edit Toolbar (visible in edit mode) -->
-    <div class="edit-toolbar">
-        <button class="toolbar-btn" id="exportBtn" title="Export modified HTML">💾 导出 HTML</button>
-        <button class="toolbar-btn danger" id="resetBtn" title="Reset all edits">↩️ 重置</button>
-    </div>
+    
 
     <!-- Confirm Dialog -->
-    <div class="confirm-overlay" id="confirmOverlay">
-        <div class="confirm-dialog">
-            <h3 id="confirmTitle">确认删除</h3>
-            <p id="confirmMsg">确定要删除这一页 Slide 吗？</p>
-            <div class="confirm-actions">
-                <button class="btn-cancel" id="confirmCancel">取消</button>
-                <button class="btn-confirm-delete" id="confirmOk">删除</button>
-            </div>
-        </div>
-    </div>
+    
 
 
     <!-- =============================================
          SLIDE 1: TITLE
          ============================================= -->
-    <section class="slide title-slide" data-slide="0">
+    <section class="slide title-slide visible" data-slide="0">
         <div class="slide-content">
-            <div class="eyebrow reveal">GUE NextGen Scholar · 2024 — 2025</div>
-            <h1 class="reveal d2">一个矛盾潜水员的<br><span class="gold">蜕变之路</span></h1>
+            <div class="eyebrow reveal">GUE NextGen Scholar · 2026</div>
+            <h1 class="reveal d2">A Diver's Confession<div>一个潜水员的自白</div></h1>
             <div class="gold-line reveal d3"></div>
-            <p class="reveal d4" style="font-family: var(--font-display-en); font-style: italic; color: var(--text-muted); font-size: var(--body-size);">
-                A Contradictory Diver's Transformation
-            </p>
+            <p class="reveal d4" style="font-family: var(--font-display-en); font-style: italic; color: var(--text-muted); font-size: var(--body-size);">蔡佳灵 Jialing Cai</p>
         </div>
     </section>
 
@@ -1410,8 +1365,6 @@
                 if (this.currentSlide >= this.slides.length) {
                     this.currentSlide = this.slides.length - 1;
                 }
-
-                // Rebuild nav dots
                 const container = document.getElementById('navDots');
                 if (container) {
                     container.innerHTML = '';
@@ -1424,9 +1377,7 @@
                     });
                     this.navDotElements = container.querySelectorAll('.nav-dot');
                 }
-
-                // Re-observe new slide set
-                const observer = new IntersectionObserver((entries) => {
+                const obs = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
@@ -1439,55 +1390,37 @@
                         }
                     });
                 }, { threshold: 0.5 });
-                this.slides.forEach(slide => observer.observe(slide));
-
+                this.slides.forEach(slide => obs.observe(slide));
                 this.updateProgressBar();
             }
         }
 
         /* ===========================================
            INLINE EDITOR
-           Text editing, slide deletion, export HTML
+           Click text to edit, Ctrl+S to save, E to toggle
            =========================================== */
         class InlineEditor {
-            constructor(presentation) {
-                this.presentation = presentation;
+            constructor() {
                 this.isActive = false;
                 this.editableSelectors = 'h1, h2, h3, p, li, .quote-text, .person-name, .person-desc, .eyebrow, .contra-text, .vs-badge';
-                this.storageKey = 'diving-presentation-edits';
-                this.deletedSlidesKey = 'diving-presentation-deleted';
-                this.pendingDeleteSlide = null;
+                this.storageKey = 'diving-presentation-edits-v2';
 
-                this.addDeleteButtons();
+                // Clear stale data from old versions
+                localStorage.removeItem('diving-presentation-edits');
+                localStorage.removeItem('diving-presentation-deleted');
+
                 this.setupToggle();
                 this.setupKeyboardShortcut();
                 this.setupSaveShortcut();
-                this.setupConfirmDialog();
-                this.setupToolbar();
                 this.loadEdits();
-                this.loadDeletedSlides();
             }
 
-            /* --- Add delete button to every slide --- */
-            addDeleteButtons() {
-                document.querySelectorAll('.slide').forEach(slide => {
-                    const btn = document.createElement('button');
-                    btn.className = 'slide-delete-btn';
-                    btn.textContent = '🗑️ 删除此页';
-                    btn.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        this.requestDeleteSlide(slide);
-                    });
-                    slide.appendChild(btn);
-                });
-            }
-
-            /* --- Toggle button with hotzone hover --- */
             setupToggle() {
                 const hotzone = document.getElementById('editHotzone');
                 const toggle = document.getElementById('editToggle');
                 let hideTimeout = null;
 
+                // Hotzone hover with 400ms grace period
                 hotzone.addEventListener('mouseenter', () => {
                     clearTimeout(hideTimeout);
                     toggle.classList.add('show');
@@ -1506,11 +1439,11 @@
                     }, 400);
                 });
 
+                // Click handlers
                 toggle.addEventListener('click', () => this.toggleEditMode());
                 hotzone.addEventListener('click', () => this.toggleEditMode());
             }
 
-            /* --- E key shortcut --- */
             setupKeyboardShortcut() {
                 document.addEventListener('keydown', (e) => {
                     if ((e.key === 'e' || e.key === 'E') && !e.target.getAttribute('contenteditable')) {
@@ -1519,60 +1452,16 @@
                 });
             }
 
-            /* --- Ctrl/Cmd+S to save --- */
             setupSaveShortcut() {
                 document.addEventListener('keydown', (e) => {
                     if ((e.ctrlKey || e.metaKey) && e.key === 's') {
                         e.preventDefault();
                         this.saveEdits();
-                        this.showToast('已保存到浏览器');
+                        this.showToast();
                     }
                 });
             }
 
-            /* --- Confirm dialog for delete --- */
-            setupConfirmDialog() {
-                const overlay = document.getElementById('confirmOverlay');
-                const cancelBtn = document.getElementById('confirmCancel');
-                const okBtn = document.getElementById('confirmOk');
-
-                cancelBtn.addEventListener('click', () => {
-                    this.pendingDeleteSlide = null;
-                    overlay.classList.remove('show');
-                });
-
-                okBtn.addEventListener('click', () => {
-                    if (this.pendingDeleteSlide) {
-                        this.deleteSlide(this.pendingDeleteSlide);
-                        this.pendingDeleteSlide = null;
-                    }
-                    overlay.classList.remove('show');
-                });
-
-                // Close on overlay click
-                overlay.addEventListener('click', (e) => {
-                    if (e.target === overlay) {
-                        this.pendingDeleteSlide = null;
-                        overlay.classList.remove('show');
-                    }
-                });
-
-                // Close on Escape
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape' && overlay.classList.contains('show')) {
-                        this.pendingDeleteSlide = null;
-                        overlay.classList.remove('show');
-                    }
-                });
-            }
-
-            /* --- Toolbar: export + reset --- */
-            setupToolbar() {
-                document.getElementById('exportBtn').addEventListener('click', () => this.exportHTML());
-                document.getElementById('resetBtn').addEventListener('click', () => this.resetAllEdits());
-            }
-
-            /* --- Toggle edit mode on/off --- */
             toggleEditMode() {
                 this.isActive = !this.isActive;
                 const toggle = document.getElementById('editToggle');
@@ -1588,77 +1477,22 @@
                     toggle.textContent = '✏️ 编辑模式';
                     this.makeEditable(false);
                     this.saveEdits();
-                    this.showToast('已保存到浏览器');
+                    this.showToast();
                 }
             }
 
             makeEditable(editable) {
                 document.querySelectorAll(this.editableSelectors).forEach(el => {
-                    el.setAttribute('contenteditable', editable ? 'true' : 'false');
+                    // Skip elements that are purely structural
+                    if (el.querySelector('span, strong, br') && el.children.length > 0) {
+                        // For elements with inline children, make children editable instead
+                        el.setAttribute('contenteditable', editable ? 'true' : 'false');
+                    } else {
+                        el.setAttribute('contenteditable', editable ? 'true' : 'false');
+                    }
                 });
             }
 
-            /* --- Slide deletion --- */
-            requestDeleteSlide(slide) {
-                this.pendingDeleteSlide = slide;
-                // Show slide preview text in confirm dialog
-                const heading = slide.querySelector('h1, h2, h3');
-                const preview = heading ? heading.textContent.trim().substring(0, 30) : 'this slide';
-                document.getElementById('confirmMsg').textContent = `确定要删除「${preview}」这一页吗？`;
-                document.getElementById('confirmOverlay').classList.add('show');
-            }
-
-            deleteSlide(slide) {
-                // Store original data-slide id so we can persist deletion
-                const slideId = slide.dataset.slide;
-                const deletedSlides = this.getDeletedSlides();
-                // Store the original slide index from the HTML
-                deletedSlides.push(slideId);
-                localStorage.setItem(this.deletedSlidesKey, JSON.stringify(deletedSlides));
-
-                // Animate out
-                slide.style.transition = 'opacity 0.4s ease, max-height 0.4s ease';
-                slide.style.opacity = '0';
-                slide.style.maxHeight = '0';
-                slide.style.overflow = 'hidden';
-                slide.style.height = '0';
-                slide.style.minHeight = '0';
-
-                setTimeout(() => {
-                    slide.remove();
-                    this.renumberSlides();
-                    this.presentation.refresh();
-                    this.showToast('已删除 Slide');
-                }, 400);
-            }
-
-            getDeletedSlides() {
-                try {
-                    return JSON.parse(localStorage.getItem(this.deletedSlidesKey) || '[]');
-                } catch { return []; }
-            }
-
-            loadDeletedSlides() {
-                const deleted = this.getDeletedSlides();
-                if (deleted.length === 0) return;
-
-                // Remove slides that were previously deleted
-                deleted.forEach(id => {
-                    const slide = document.querySelector(`.slide[data-slide="${id}"]`);
-                    if (slide) slide.remove();
-                });
-
-                this.renumberSlides();
-                this.presentation.refresh();
-            }
-
-            renumberSlides() {
-                document.querySelectorAll('.slide').forEach((slide, i) => {
-                    slide.dataset.slide = i;
-                });
-            }
-
-            /* --- Save/load text edits --- */
             saveEdits() {
                 const edits = {};
                 document.querySelectorAll(this.editableSelectors).forEach((el, index) => {
@@ -1670,6 +1504,7 @@
             loadEdits() {
                 const saved = localStorage.getItem(this.storageKey);
                 if (!saved) return;
+
                 try {
                     const edits = JSON.parse(saved);
                     document.querySelectorAll(this.editableSelectors).forEach((el, index) => {
@@ -1682,25 +1517,135 @@
                 }
             }
 
-            /* --- Export current HTML as download --- */
+            showToast(message) {
+                const toast = document.getElementById('saveToast');
+                if (message) toast.textContent = message;
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 2000);
+            }
+        }
+
+        /* ===========================================
+           SLIDE MANAGEMENT — Delete, Export, Reset
+           Extends editor with slide-level operations
+           =========================================== */
+        class SlideManager {
+            constructor(presentation, editor) {
+                this.presentation = presentation;
+                this.editor = editor;
+                this.deletedSlidesKey = 'diving-presentation-deleted';
+                this.pendingDeleteSlide = null;
+
+                this.addDeleteButtons();
+                this.setupConfirmDialog();
+                this.setupToolbar();
+                this.loadDeletedSlides();
+            }
+
+            addDeleteButtons() {
+                document.querySelectorAll('.slide').forEach(slide => {
+                    const btn = document.createElement('button');
+                    btn.className = 'slide-delete-btn';
+                    btn.textContent = '🗑️ 删除此页';
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.requestDelete(slide);
+                    });
+                    slide.appendChild(btn);
+                });
+            }
+
+            setupConfirmDialog() {
+                const overlay = document.getElementById('confirmOverlay');
+                document.getElementById('confirmCancel').addEventListener('click', () => {
+                    this.pendingDeleteSlide = null;
+                    overlay.classList.remove('show');
+                });
+                document.getElementById('confirmOk').addEventListener('click', () => {
+                    if (this.pendingDeleteSlide) {
+                        this.deleteSlide(this.pendingDeleteSlide);
+                        this.pendingDeleteSlide = null;
+                    }
+                    overlay.classList.remove('show');
+                });
+                overlay.addEventListener('click', (e) => {
+                    if (e.target === overlay) {
+                        this.pendingDeleteSlide = null;
+                        overlay.classList.remove('show');
+                    }
+                });
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && overlay.classList.contains('show')) {
+                        this.pendingDeleteSlide = null;
+                        overlay.classList.remove('show');
+                    }
+                });
+            }
+
+            setupToolbar() {
+                document.getElementById('exportBtn').addEventListener('click', () => this.exportHTML());
+                document.getElementById('resetBtn').addEventListener('click', () => this.resetAll());
+            }
+
+            requestDelete(slide) {
+                this.pendingDeleteSlide = slide;
+                const heading = slide.querySelector('h1, h2, h3');
+                const preview = heading ? heading.textContent.trim().substring(0, 30) : 'this slide';
+                document.getElementById('confirmTitle').textContent = '确认删除';
+                document.getElementById('confirmMsg').textContent = '确定要删除「' + preview + '」这一页吗？';
+                document.getElementById('confirmOk').textContent = '删除';
+                document.getElementById('confirmOverlay').classList.add('show');
+            }
+
+            deleteSlide(slide) {
+                const slideId = slide.dataset.slide;
+                const deleted = this.getDeleted();
+                deleted.push(slideId);
+                localStorage.setItem(this.deletedSlidesKey, JSON.stringify(deleted));
+
+                slide.style.transition = 'opacity 0.4s ease, height 0.4s ease';
+                slide.style.opacity = '0';
+                slide.style.height = '0';
+                slide.style.minHeight = '0';
+                slide.style.overflow = 'hidden';
+
+                setTimeout(() => {
+                    slide.remove();
+                    this.renumberSlides();
+                    this.presentation.refresh();
+                    this.editor.showToast('已删除 Slide');
+                }, 400);
+            }
+
+            getDeleted() {
+                try { return JSON.parse(localStorage.getItem(this.deletedSlidesKey) || '[]'); }
+                catch { return []; }
+            }
+
+            loadDeletedSlides() {
+                const deleted = this.getDeleted();
+                if (deleted.length === 0) return;
+                deleted.forEach(id => {
+                    const slide = document.querySelector('.slide[data-slide="' + id + '"]');
+                    if (slide) slide.remove();
+                });
+                this.renumberSlides();
+                this.presentation.refresh();
+            }
+
+            renumberSlides() {
+                document.querySelectorAll('.slide').forEach((slide, i) => {
+                    slide.dataset.slide = i;
+                });
+            }
+
             exportHTML() {
-                // Clone the document
                 const clone = document.documentElement.cloneNode(true);
-
-                // Remove edit-mode UI elements from the clone
                 clone.querySelectorAll('.edit-hotzone, .edit-toggle, .edit-toolbar, .confirm-overlay, .save-toast, .slide-delete-btn, .keyboard-hint').forEach(el => el.remove());
-
-                // Remove contenteditable attributes
                 clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
-
-                // Remove edit-mode class from body
                 const body = clone.querySelector('body');
                 if (body) body.classList.remove('edit-mode');
-
-                // Build clean HTML
                 const html = '<!DOCTYPE html>\n<html lang="zh-CN">\n' + clone.innerHTML + '\n</html>';
-
-                // Download
                 const blob = new Blob([html], { type: 'text/html' });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
@@ -1708,45 +1653,24 @@
                 a.download = 'presentation-export.html';
                 a.click();
                 URL.revokeObjectURL(url);
-
-                this.showToast('已导出 HTML 文件');
+                this.editor.showToast('已导出 HTML 文件');
             }
 
-            /* --- Reset all edits and deleted slides --- */
-            resetAllEdits() {
-                this.pendingDeleteSlide = null;
+            resetAll() {
                 document.getElementById('confirmTitle').textContent = '确认重置';
                 document.getElementById('confirmMsg').textContent = '重置所有编辑和删除操作？页面将会刷新。';
                 document.getElementById('confirmOk').textContent = '重置';
-
                 const overlay = document.getElementById('confirmOverlay');
                 overlay.classList.add('show');
 
-                // Override the OK button temporarily
                 const okBtn = document.getElementById('confirmOk');
                 const newOk = okBtn.cloneNode(true);
                 okBtn.parentNode.replaceChild(newOk, okBtn);
-
                 newOk.addEventListener('click', () => {
-                    localStorage.removeItem(this.storageKey);
+                    localStorage.removeItem(this.editor.storageKey);
                     localStorage.removeItem(this.deletedSlidesKey);
                     location.reload();
                 });
-
-                // Re-wire cancel
-                document.getElementById('confirmCancel').addEventListener('click', () => {
-                    overlay.classList.remove('show');
-                    // Restore dialog defaults
-                    document.getElementById('confirmTitle').textContent = '确认删除';
-                    document.getElementById('confirmOk').textContent = '删除';
-                }, { once: true });
-            }
-
-            showToast(message) {
-                const toast = document.getElementById('saveToast');
-                toast.textContent = message || '已保存到浏览器';
-                toast.classList.add('show');
-                setTimeout(() => toast.classList.remove('show'), 2000);
             }
         }
 
@@ -1754,7 +1678,10 @@
            INITIALIZE
            =========================================== */
         const presentation = new SlidePresentation();
-        const editor = new InlineEditor(presentation);
+        const editor = new InlineEditor();
+        const manager = new SlideManager(presentation, editor);
     </script>
+
+
 </body>
 </html>
